@@ -49,17 +49,16 @@ const ProductCard = ({children, product:{title,img}}: IProps) => {
 
   return (
     <div className={styles.productCard}>
-        
-        {/* <ProductImage img={img}/>
-        <ProductTitle title={title}/>
-        <ProductButtons counter={counter} increaseBy={increaseBy} /> */}
+      
         {children}
-
-
-
+      
         
     </div>
   )
 }
 
+{/* MANERA 2 */}
+ProductCard.Title = ProductTitle;
+ProductCard.Image = ProductImage;
+ProductCard.Buttons = ProductButtons
 export default ProductCard

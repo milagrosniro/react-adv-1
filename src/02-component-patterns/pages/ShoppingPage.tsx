@@ -21,10 +21,20 @@ const ShoppingPage = () => {
           }} >
 
           </div>
+          {/* MANERA 1 DE COMPONENT PATTERN */}
           <ProductCard product={product}>
             <ProductImage img={product.img}/>
             <ProductTitle title={product.title} />
             <ProductButtons counter={counter} increaseBy={increaseBy} />
+            </ProductCard>
+
+            {/* MANERA 2 DE COMPONENT PATTERN */}
+            <ProductCard product={product}>
+
+              <ProductCard.Image/>
+              <ProductCard.Title title={'titulo'}/>
+              <ProductCard.Buttons increaseBy={increaseBy} counter={counter} />
+            
             </ProductCard>
       </div>
   )
