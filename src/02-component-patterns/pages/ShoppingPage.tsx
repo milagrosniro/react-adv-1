@@ -1,6 +1,6 @@
 
 import ProductCard, { ProductButtons, ProductImage, ProductTitle } from '../components/ProductCard'
-import useProduct from '../hooks/useProduct'
+
 
 const product = {
 id:'1',
@@ -9,7 +9,7 @@ img: './coffee-mug.png'
 }
 
 const ShoppingPage = () => {
-  const {counter, increaseBy} = useProduct()
+  
   return (
       <div>
           <h1>Shopping</h1>
@@ -23,17 +23,19 @@ const ShoppingPage = () => {
           </div>
           {/* MANERA 1 DE COMPONENT PATTERN */}
           <ProductCard product={product}>
+
             <ProductImage img={product.img}/>
-            <ProductTitle title={product.title} />
-            <ProductButtons counter={counter} increaseBy={increaseBy} />
+            <ProductTitle title={'Titulo 1'} />
+            <ProductButtons  />
+
             </ProductCard>
 
             {/* MANERA 2 DE COMPONENT PATTERN */}
             <ProductCard product={product}>
 
               <ProductCard.Image/>
-              <ProductCard.Title title={'titulo'}/>
-              <ProductCard.Buttons increaseBy={increaseBy} counter={counter} />
+              <ProductCard.Title />
+              <ProductCard.Buttons  />
             
             </ProductCard>
       </div>
