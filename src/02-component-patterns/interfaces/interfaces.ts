@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+
 import { IProductCardProps } from "../components/ProductCard";
 
 
@@ -20,7 +20,7 @@ import { IProductCardProps } from "../components/ProductCard";
     Title: ({ title }: {
       title?: string
   }) => JSX.Element,
-     Buttons: () => JSX.Element,
+     Buttons: ({className}: {className?: string}) => JSX.Element,
      Image: ({ img }: {
     img?: string
 }) => JSX.Element

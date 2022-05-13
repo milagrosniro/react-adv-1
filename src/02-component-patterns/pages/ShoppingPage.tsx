@@ -23,15 +23,15 @@ const ShoppingPage = () => {
           }} >
 {/* MANERA 1 DE COMPONENT PATTERN */}
 <ProductCard product={product}
-className="bg-dark"
+className="bg-dark text-white "
            >
 
             <ProductImage img={product.img}
             className="custom-image"
             />
             <ProductTitle title={'Titulo 1'} 
-            className="text-white text-bold"/>
-            <ProductButtons  />
+            className="text-bold"/>
+            <ProductButtons className="custom-buttons" />
 
             </ProductCard>
 
