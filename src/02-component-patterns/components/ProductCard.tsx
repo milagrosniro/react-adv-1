@@ -1,18 +1,21 @@
 import useProduct from '../hooks/useProduct';
 import styles from '../styles/styles.module.css';
 
-import { createContext } from 'react';
-import { IProductContextProps, IProductCardProps } from '../interfaces/interfaces';
-
-
+import { createContext, ReactElement } from 'react';
+import { IProductContextProps, IProduct } from '../interfaces/interfaces';
 
 //Creacion contexto del producto
 export const ProductContext = createContext({} as IProductContextProps);
 //Proveedor de Info
 export const {Provider} = ProductContext;
 
+export interface IProductCardProps{
+  product: IProduct,
+  children?: ReactElement | ReactElement[],
+  className?: string
+}
 
-export const ProductCard = ({children, product}:IProductCardProps) => {
+export const ProductCard = ({children, product, className}:IProductCardProps) => {
 
    const {counter, increaseBy} = useProduct()
 
@@ -23,8 +26,8 @@ export const ProductCard = ({children, product}:IProductCardProps) => {
       increaseBy,
       product
     }}>
-
-    <div className={styles.productCard}>
+{   /* Extension styles, recibe como param className y se lo agrego en la className del lugar donde quiero q reciba */}
+    <div className={`${styles.productCard} ${className}`}>
       
         {children}
               

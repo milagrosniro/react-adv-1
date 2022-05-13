@@ -11,7 +11,8 @@ export  {ProductTitle} from './ProductTitle';
 export const ProductCard : IProductCardHOCProps = Object.assign(ProductCardHOC, {
     Title: ProductTitle,
     Buttons: ProductButtons,
-    Image: ProductImage
+    Image: ProductImage,
+    
 })
 
 export default ProductCard;

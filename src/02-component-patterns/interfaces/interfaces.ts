@@ -1,9 +1,7 @@
 import { ReactElement } from "react";
+import { IProductCardProps } from "../components/ProductCard";
 
-export interface IProductCardProps{
-    product: IProduct,
-    children?: ReactElement | ReactElement[]
-  }
+
   
   export interface IProduct{
     id: string;

@@ -1,6 +1,8 @@
 
 import { ProductTitle, ProductButtons, ProductCard, ProductImage} from '../components/'
 
+import '../styles/custom-styles.css';
+
 
 const product = {
 id:'1',
@@ -11,7 +13,7 @@ img: './coffee-mug.png'
 const ShoppingPage = () => {
   
   return (
-      <div>
+      <div >
           <h1>Shopping</h1>
           <hr/>
 
@@ -19,13 +21,16 @@ const ShoppingPage = () => {
             display:'flex',
             flexWrap:'wrap'
           }} >
+{/* MANERA 1 DE COMPONENT PATTERN */}
+<ProductCard product={product}
+className="bg-dark"
+           >
 
-          </div>
-          {/* MANERA 1 DE COMPONENT PATTERN */}
-          <ProductCard product={product}>
-
-            <ProductImage img={product.img}/>
-            <ProductTitle title={'Titulo 1'} />
+            <ProductImage img={product.img}
+            className="custom-image"
+            />
+            <ProductTitle title={'Titulo 1'} 
+            className="text-white text-bold"/>
             <ProductButtons  />
 
             </ProductCard>
@@ -38,6 +43,8 @@ const ShoppingPage = () => {
               <ProductCard.Buttons  />
             
             </ProductCard>
+          </div>
+          
       </div>
   )
 }
