@@ -13,7 +13,7 @@ img: './coffee-mug.png'
 const ShoppingPage = () => {
   
   return (
-      <div >
+      <div>
           <h1>Shopping</h1>
           <hr/>
 
@@ -28,6 +28,9 @@ className="bg-dark text-white "
 
             <ProductImage img={product.img}
             className="custom-image"
+            style={{
+              boxShadow: '10px 10px 10px rgba(0,0,0,0,2)'
+            }}
             />
             <ProductTitle title={'Titulo 1'} 
             className="text-bold"/>
@@ -36,12 +39,35 @@ className="bg-dark text-white "
             </ProductCard>
 
             {/* MANERA 2 DE COMPONENT PATTERN */}
-            <ProductCard product={product}>
+            <ProductCard product={product} className="bg-dark text-white"
+            style={{
+              backgroundColor: '#70D1F8'
+            }}
+            >
 
-              <ProductCard.Image/>
-              <ProductCard.Title />
-              <ProductCard.Buttons  />
+              <ProductCard.Image className="custom-image"
+              style={{
+                boxShadow: '10px 10px 10px rgba(0,0,0,0,2)'
+              }}
+              />
+              <ProductCard.Title  className="text-bold"
+              style={{
+                fontWeight: 'bold'
+              }} />
+              <ProductCard.Buttons className="custom-buttons"
+              style={{
+                display:'flex',
+                justifyContent:'end'
+              }} />
             
+            </ProductCard>
+
+            <ProductCard product={product} className="bg-dark text-white ">
+
+              <ProductCard.Image className="custom-image"/>
+              <ProductCard.Title  className="text-bold" />
+              <ProductCard.Buttons className="custom-buttons" />
+
             </ProductCard>
           </div>
           

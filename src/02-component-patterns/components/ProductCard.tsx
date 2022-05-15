@@ -12,10 +12,11 @@ export const {Provider} = ProductContext;
 export interface IProductCardProps{
   product: IProduct,
   children?: ReactElement | ReactElement[],
-  className?: string
+  className?: string,
+  style?: React.CSSProperties
 }
 
-export const ProductCard = ({children, product, className}:IProductCardProps) => {
+export const ProductCard = ({children, product, className, style}:IProductCardProps) => {
 
    const {counter, increaseBy} = useProduct()
 
@@ -27,7 +28,10 @@ export const ProductCard = ({children, product, className}:IProductCardProps) =>
       product
     }}>
 {   /* Extension styles, recibe como param className y se lo agrego en la className del lugar donde quiero q reciba */}
-    <div className={`${styles.productCard} ${className}`}>
+    <div className={`${styles.productCard} ${className}
+    `}
+    style={style}
+    >
       
         {children}
               
