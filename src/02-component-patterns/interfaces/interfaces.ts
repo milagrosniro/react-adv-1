@@ -23,3 +23,7 @@ import { IPropsProductTitle } from '../components/ProductTitle';
      Image: (Props:IPropsProductImage) => JSX.Element
   }
   
+  export interface IOnchangeArgs{
+    product: IProduct,
+    count: number
+  }
