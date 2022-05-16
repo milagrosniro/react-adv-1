@@ -15,11 +15,12 @@ export interface IProductCardProps{
   className?: string,
   style?: React.CSSProperties,
   onChange?: (args: IOnchangeArgs) => void;
+  value1?: number
 }
 
-export const ProductCard = ({children, product, className, style, onChange}:IProductCardProps) => {
+export const ProductCard = ({children, product, className, style, onChange, value1}:IProductCardProps) => {
 
-   const {counter, increaseBy} = useProduct({onChange, product})
+   const {counter, increaseBy} = useProduct({onChange, product, value1})
 
   return (
     // cada ProductCard va a tener su propio estado independiente

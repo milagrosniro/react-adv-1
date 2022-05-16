@@ -31,7 +31,7 @@ const ShoppingPage = () => {
   
   const onProductCountChange = ({product, count}: {count:number, product: IProduct})=>{
     //El product recibe como evento el producto y el count, pq la funcion recibe como arg el prodct y el count
-    console.log(count, "COUNT")
+    
       if(count === 0){
         //Eliminar un objeto de un obj desde desestructuracion
 
@@ -61,10 +61,13 @@ const ShoppingPage = () => {
             display:'flex',
             flexWrap:'wrap'
           }} >
+            
         {
+          //para sincronizar el count de la cart grande con la chica, envio el valor del count de ese producto, y si no hay nada envio 0
           products.map(product =>(
             <ProductCard product={product} className="bg-dark text-white"
             key={product.id}
+            value1={shoppingCart[product.id]?.count  || 0 }
             onChange={onProductCountChange}
             >
 
@@ -89,7 +92,10 @@ const ShoppingPage = () => {
               key={key}
               style={{
                 width:'100px'
-              }}>
+              }}
+              value1={product.count}
+              onChange={onProductCountChange}
+              >
   
                 <ProductCard.Image className="custom-image"/>
                 <ProductCard.Buttons className="custom-buttons"
