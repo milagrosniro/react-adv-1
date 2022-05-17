@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { IProduct, IOnchangeArgs } from '../interfaces/interfaces';
 
 interface IUseProductArgs{
@@ -10,20 +10,24 @@ interface IUseProductArgs{
 export const useProduct = ({product, onChange, value1 = 0}: IUseProductArgs) =>{
     const [counter,setCounter] = useState(value1)
 
-    const increaseBy = (value: number) =>{
+    //si reciba la funcion onChange --> isControlled= true
+     const isControlled = useRef(!!onChange)
+     const increaseBy = (value: number) =>{
+    
+        //si recibe onChange, ejecutar onChange usando el valor que recibe increaseBy (+1 o -1)
+        if(isControlled.current){
+            return onChange!({count: value, product})
+        }
         
         const newValue = Math.max(counter+value,0)
         setCounter(prev => Math.max(prev+value,0))
        
-        onChange && onChange({product, count: newValue});
+        // onChange && onChange({product, count: newValue});
     }
 
     //cada vez que cambie el value1, se setea el counter con ese value1, de esta manera mantenemos sincronizados el estado de la cart pequeña y el de la grande
     useEffect(() => {
-      
-      setCounter(value1)
-
-      
+      setCounter(value1) 
     }, [value1])
     
     return{
