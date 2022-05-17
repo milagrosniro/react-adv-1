@@ -13,7 +13,10 @@ import { IPropsProductTitle } from '../components/ProductTitle';
   export interface IProductContextProps{
     counter: number;
     increaseBy: (value:number) => void;
-    product: IProduct
+    maxCount?: number,
+    product: IProduct,
+    isMaxCountReached? : boolean,
+    reset: () => void
   }
 
   export interface IProductCardHOCProps{
@@ -32,7 +35,18 @@ import { IPropsProductTitle } from '../components/ProductTitle';
     count: number
     }
   
-    export interface IInitialValues{
+  export interface IInitialValues{
       count?: number,
       maxCount?: number
     }
+  
+  export interface IProductCardHandlers{
+    count: number,
+    isMaxCountReached: boolean,
+    maxCount?: number,
+    product: IProduct,
+
+    increaseBy:(value:number) => void,
+    reset: () => void
+
+  }

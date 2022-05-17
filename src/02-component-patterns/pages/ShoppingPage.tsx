@@ -2,6 +2,7 @@
 import {ProductCard} from '../components/'
 import {products} from '../data/products'
 import '../styles/custom-styles.css';
+import { IProductCardHandlers } from '../interfaces/interfaces';
 
 const product = products[0]
 
@@ -21,7 +22,11 @@ const ShoppingPage = () => {
             }}
             >
               {
-                ()=>(
+                ({count,
+                  isMaxCountReached,
+                  maxCount,
+                  increaseBy,
+                  reset})=>(
                   <>
                   <ProductCard.Image className="custom-image"
               style={{
@@ -33,6 +38,16 @@ const ShoppingPage = () => {
                  display:'flex',
                  justifyContent:'center'
                }}/>
+              <button onClick={reset}>RESET</button>
+               <button onClick={()=>increaseBy(-2)}>-2</button>
+               {/* Si  llega al maxCount ocultar, sino mostrar */}
+               {
+                //si no se llego al valor maximo que muestre el btn
+                !isMaxCountReached &&
+                 <button onClick={()=>increaseBy(2)}>+2</button>
+               }
+               
+               <span>{count} - {maxCount}</span>
                   </>
                 )
               }

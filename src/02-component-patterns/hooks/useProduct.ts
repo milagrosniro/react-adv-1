@@ -5,7 +5,9 @@ interface IUseProductArgs{
     product: IProduct,
     onChange?: (args: IOnchangeArgs) => void,
     value1?: number,
-    initialValues?: IInitialValues
+    initialValues?: IInitialValues,
+    
+   
 }
                                                 //cuando no se envie value1 este valdra 0
 export const useProduct = ({product, onChange, value1 = 0, initialValues}: IUseProductArgs) =>{
@@ -29,7 +31,9 @@ export const useProduct = ({product, onChange, value1 = 0, initialValues}: IUseP
         setCounter(newValue)      
         onChange && onChange({count: newValue,product});
     }
-   
+   const reset = () =>{
+      setCounter(initialValues?.count || value1)
+   }
     //cada vez que cambie el value1, se setea el counter con ese value1, de esta manera mantenemos sincronizados el estado de la cart pequeña y el de la grande
     //Esto permite que el useEffect se ejecute cuando se monta por primera vez el componente
     useEffect(() => {
@@ -42,64 +46,15 @@ export const useProduct = ({product, onChange, value1 = 0, initialValues}: IUseP
         isMounted.current = true
     }, [])
 
-    
-
     return{
         counter,
-        increaseBy
+        isMaxCountReached: !!initialValues?.maxCount && initialValues.maxCount === counter,
+        maxCount: initialValues?.maxCount,
+        
+        increaseBy,
+        reset
     }
 }
 
 export default useProduct
 
-// import { useEffect, useRef, useState } from 'react'
-// import { IOnchangeArgs, IProduct, IInitialValues } from '../interfaces/interfaces';
-
-
-// interface useProductArgs {
-//     product: IProduct;
-//     onChange?: ( args: IOnchangeArgs ) => void;
-//     value1?: number;
-//     initialValues?: IInitialValues;
-// }
-
-
-// export const useProduct = ({ onChange, product, value1 = 0, initialValues }: useProductArgs) => {
-
-//     const [ counter, setCounter ] = useState<number>( initialValues?.count || value1 );
-//     const isMounted = useRef(false);
-
-//     const increaseBy = ( value: number ) => {
-      
-//         let newValue = Math.max( counter + value, 0 )
-//         if ( initialValues?.maxCount ) {
-//             newValue = Math.min( newValue, initialValues.maxCount )
-//         }
-        
-//         setCounter( newValue );
-//         onChange && onChange({ count: newValue, product });
-//     }
-
-//     const reset = () => {
-//         setCounter(initialValues?.count || value1 )
-//     }
-
-//     useEffect(() => {
-//         if ( !isMounted.current ) return;
-//         setCounter( value1 );
-//     }, [ value1 ])
-
-//     useEffect(() => {
-//         isMounted.current = true;
-//     }, [])
-
-//     return {
-//         counter,     
-//         increaseBy,
-       
-
-//     }
-
-// }
-
-// export default useProduct
