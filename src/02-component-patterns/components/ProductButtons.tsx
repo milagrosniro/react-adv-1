@@ -9,7 +9,7 @@ export interface IProductButtonsProps{
 
 export const ProductButtons = ({className, style}: IProductButtonsProps)  =>{
     const {increaseBy, counter}= useContext(ProductContext)
-  return(
+    return(
     <div className={`${styles.buttonsContainer} ${className}` } style={style}>
     <button className={styles.buttonMinus} onClick={()=>increaseBy(-1)}>-</button>
 <div className={styles.countLabel} > {counter} </div>

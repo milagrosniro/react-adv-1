@@ -31,3 +31,8 @@ import { IPropsProductTitle } from '../components/ProductTitle';
   export interface IProductInCart extends IProduct{
     count: number
     }
+  
+    export interface IInitialValues{
+      count?: number,
+      maxCount?: number
+    }
