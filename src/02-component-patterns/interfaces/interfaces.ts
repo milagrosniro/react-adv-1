@@ -27,3 +27,7 @@ import { IPropsProductTitle } from '../components/ProductTitle';
     product: IProduct,
     count: number
   }
+
+  export interface IProductInCart extends IProduct{
+    count: number
+    }

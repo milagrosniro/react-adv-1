@@ -1,79 +1,12 @@
 
-import { ProductTitle, ProductButtons, ProductCard, ProductImage} from '../components/'
-
+import {ProductCard} from '../components/'
+import {products} from '../data/products'
 import '../styles/custom-styles.css';
-import { IProduct } from '../interfaces/interfaces';
-import { useState } from 'react';
+import { useShoppingCart } from '../hooks/useShoppingCart';
 
-const product1 = {
-  id:'1',
-  title:'Coffe Mug - Card',
-  img: './coffee-mug.png'
-}
 
-const product2 = {
-  id:'2',
-  title:'Coffe Mug - Meme',
-  img: './coffee-mug2.png'
-}
-const products : IProduct[] = [product1,product2
-]
-
-interface IProductInCart extends IProduct{
-count: number
-}
-
-const ShoppingPage = () => {
-  
-                                        //key: string estoy diciendo que el nombre de la propiedad del objeto es un string
-  const [shoppingCart, setShoppingCart] = useState<{[key:string] : IProductInCart}>({});
-
-  
-  const onProductCountChange = ({product, count}: {count:number, product: IProduct})=>{
-    //El product recibe como evento el producto y el count, pq la funcion recibe como arg el prodct y el count
-    
-      // if(count === 0){
-        //Eliminar un objeto de un obj desde desestructuracion
-
-        // setShoppingCart(oldShoppingCart =>{
-        //   const {[product.id]:toDelete,...rest} = oldShoppingCart
-        //   return rest
-        //  })
-        
-        //Opcion con delete
-        // setShoppingCart(() =>{
-        //   const newState = {...shoppingCart}
-        //   delete newState[product.id];
-        //   return newState;
-        // })
-
-      // }else{
-      //   setShoppingCart({...shoppingCart, [product.id]:{...product,count}})
-      // }
-      setShoppingCart(oldShoppingCart => { 
-
-        const productInCart : IProductInCart = oldShoppingCart[product.id] || {...product, count: 0}
-        console.log(Math.max(productInCart.count + count, 0)> 0, "MATH")
-        if(Math.max(productInCart.count + count, 0) > 0){
-
-          productInCart.count += count
-          return {
-            ...oldShoppingCart,
-            [product.id] : productInCart
-          }
-
-        }
-
-        //Borrar el producto
-            const {[product.id]:toDelete,...rest} = oldShoppingCart
-            return rest
-          
-          
-
-      })
-
-  }
-
+const ShoppingPage = () => {                               
+const {shoppingCart, onProductCountChange} = useShoppingCart()
   return (
       <div>
           <h1>Shopping</h1>
