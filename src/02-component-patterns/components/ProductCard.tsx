@@ -1,7 +1,7 @@
 import useProduct from '../hooks/useProduct';
 import styles from '../styles/styles.module.css';
 
-import { createContext, ReactElement } from 'react';
+import { createContext } from 'react';
 import { IProductContextProps, IProduct, IOnchangeArgs, IInitialValues, IProductCardHandlers } from '../interfaces/interfaces';
 
 //Creacion contexto del producto
