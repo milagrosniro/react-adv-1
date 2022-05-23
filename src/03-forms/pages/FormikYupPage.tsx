@@ -3,17 +3,13 @@ import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import '../styles/styles.css'
 
-interface IFormValues{
-    firstName: string,
-    lastName: string,
-    email: string
-}
+
 
 const FormikYupPage = () => {
 
    
 //useFormik se tiene que inicializar como u objeto
-    const {handleChange, handleSubmit, values, errors, touched, handleBlur} = useFormik({
+    const { handleSubmit,  errors, touched, getFieldProps} = useFormik({
         initialValues: {
             firstName: '',
             lastName: '',
@@ -34,7 +30,8 @@ const FormikYupPage = () => {
         email: Yup.string()
                     .email('Email incorrecto')
                     .required('Requerido')
-       })
+       }),
+       
     });
   return (
     <div>
@@ -45,10 +42,7 @@ const FormikYupPage = () => {
         >
             <label htmlFor='firstName'>First Name</label>
             <input type='text'
-            name='firstName'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.firstName}>
+            {...getFieldProps('firstName')}>
             </input>
 
             {touched.firstName && errors.firstName &&
@@ -56,10 +50,7 @@ const FormikYupPage = () => {
 
             <label htmlFor='lastName'>Last Name</label>
             <input type='text'
-            name='lastName'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.lastName}
+            {...getFieldProps('lastName')}
             >
             </input>
 
@@ -68,10 +59,7 @@ const FormikYupPage = () => {
 
             <label htmlFor='email'>Email Adress</label>
             <input type='email'
-            name='email'
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
+            {...getFieldProps('email')}
             >
             </input>
             {touched.email && errors.email &&
