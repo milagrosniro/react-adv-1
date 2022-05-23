@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import MyTextInput from '../components/MyTextInput'
 import '../styles/styles.css'
 import MySelect from '../components/MySelect';
+import MyCheckbox from '../components/MyCheckbox';
 
 const FormikAbstraction = () => {
 
@@ -60,16 +61,9 @@ const FormikAbstraction = () => {
                         <option value='it-senior'>IT Senior</option>
                         <option value='it-jr'>IT Jr</option>
                     </MySelect>
-                        
-                   
 
-                    <label >
-                    <Field name='terms' type='checkbox' />
-                        Terms and conditions
-                        </label>
-                    <ErrorMessage name='terms' component='span' />
-                    
-        
+                    <MyCheckbox name='terms' label='Terms and conditions'/>
+       
                     <button
                     type='submit'>
                         Submit
