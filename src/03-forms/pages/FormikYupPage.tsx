@@ -1,9 +1,7 @@
-import React from 'react'
+
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import '../styles/styles.css'
-
-
 
 const FormikYupPage = () => {
 
@@ -42,6 +40,7 @@ const FormikYupPage = () => {
         >
             <label htmlFor='firstName'>First Name</label>
             <input type='text'
+            //getFieldsProps sirve para reemplazar el name, onchange y onblur, Formik ya los reconoce por si solo
             {...getFieldProps('firstName')}>
             </input>
 

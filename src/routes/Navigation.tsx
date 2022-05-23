@@ -5,12 +5,13 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import { LazyPage3 } from '../01-lazyload/pages';
+//Ordenar alfabeticatemnte las importaciones:seleccionar lo que queiro ordenar, abrir el commmand palette y solocar sort descending
 
+import FormikBasicPage from '../03-forms/pages/FormikBasicPage';
+import FormikComponents from '../03-forms/pages/FormikComponents';
+import FormikYupPage from '../03-forms/pages/FormikYupPage';
 import logo from '../logo.svg';
 import RegisterPage from '../03-forms/pages/RegisterPage';
-import FormikBasicPage from '../03-forms/pages/FormikBasicPage';
-import FormikYupPage from '../03-forms/pages/FormikYupPage';
 
 
 export const Navigation = () => {
@@ -25,6 +26,9 @@ export const Navigation = () => {
             </li>
             <li>
               <NavLink to="/formik-basic" activeClassName="nav-active" exact>Formik Basic</NavLink>
+            </li>
+            <li>
+              <NavLink to="/formik-components" activeClassName="nav-active" exact>Formik Components</NavLink>
             </li>
             <li>
               <NavLink to="/formik-yup" activeClassName="nav-active" exact>Formik Yup</NavLink>
@@ -47,7 +51,10 @@ export const Navigation = () => {
           <Route path="/register">
             <RegisterPage/>
           </Route>
-         
+          <Route path="/formik-components">
+            <FormikComponents/>
+          </Route>
+
         </Switch>
       </div>
     </Router>
