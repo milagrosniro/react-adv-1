@@ -5,9 +5,11 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import { LazyPage1, LazyPage2,LazyPage3 } from '../01-lazyload/pages';
+import { LazyPage3 } from '../01-lazyload/pages';
 
 import logo from '../logo.svg';
+import RegisterPage from '../03-forms/pages/RegisterPage';
+import FormikBasicPage from '../03-forms/pages/FormikBasicPage';
 
 
 export const Navigation = () => {
@@ -18,28 +20,31 @@ export const Navigation = () => {
             <img src={ logo } alt="React Logo" />
           <ul>
             <li>
-              <NavLink to="/lazy1" activeClassName="nav-active" exact>Lazy1</NavLink>
+            <NavLink to="/register" activeClassName="nav-active" exact>Register</NavLink>
             </li>
             <li>
-              <NavLink to="/lazy2" activeClassName="nav-active" exact>Lazy2</NavLink>
+              <NavLink to="/formik-basic" activeClassName="nav-active" exact>Formik Basic</NavLink>
             </li>
             <li>
               <NavLink to="/lazy3" activeClassName="nav-active" exact>Lazy3</NavLink>
             </li>
+            
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-        <Route path="/lazy1">
-            <LazyPage1/>
-          </Route>
-          <Route path="/lazy2">
-            <LazyPage2/>
+        
+          <Route path="/formik-basic">
+            <FormikBasicPage/>
           </Route>
           <Route path="/lazy3">
             <LazyPage3/>
+          </Route>
+
+          <Route path="/register">
+            <RegisterPage/>
           </Route>
          
         </Switch>
