@@ -1,5 +1,6 @@
 import React from 'react'
-import {FormikErrors, useFormik} from 'formik'
+import {useFormik} from 'formik'
+import * as Yup from 'yup'
 import '../styles/styles.css'
 
 interface IFormValues{
@@ -8,32 +9,9 @@ interface IFormValues{
     email: string
 }
 
-const FormikBasicPage = () => {
+const FormikYupPage = () => {
 
-    const validate = ({firstName,lastName,email}: IFormValues) =>{
-        const errors: FormikErrors<IFormValues> = {};
-
-        if(!firstName){
-            errors.firstName= 'Required'
-        }else if(firstName.length >= 15){
-            errors.firstName='Must be 15 characters or less'
-        }
-
-        if(!lastName){
-            errors.lastName= 'Required'
-        }else if(lastName.length >= 10){
-            errors.lastName='Must be 10 characters or less'
-        }
-
-        if (!email) {
-            errors.email = 'Required';
-          } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
-            errors.email = 'Invalid email address';
-          }
-
-        return errors
-
-    }
+   
 //useFormik se tiene que inicializar como u objeto
     const {handleChange, handleSubmit, values, errors, touched, handleBlur} = useFormik({
         initialValues: {
@@ -45,11 +23,22 @@ const FormikBasicPage = () => {
         onSubmit: (values) =>{
             console.log(values)
         },
-        validate
+        //esta propiedad arma un esquema de validacion, para eso se usa Yup que sirve para hacer validaciones faciles
+       validationSchema: Yup.object({
+        firstName: Yup.string()
+                    .max(15, 'Debe tener 15 caracteres o menos')
+                    .required('Requerido'),
+        lastName: Yup.string()
+                    .max(15, 'Debe tener 15 caracteres o menos')
+                    .required('Requerido'),
+        email: Yup.string()
+                    .email('Email incorrecto')
+                    .required('Requerido')
+       })
     });
   return (
     <div>
-        <h1>Formik Basic Tutorial</h1>
+        <h1>Formik Yup</h1>
         <form noValidate
         onSubmit={handleSubmit}
         
@@ -99,4 +88,4 @@ const FormikBasicPage = () => {
   )
 }
 
-export default FormikBasicPage
+export default FormikYupPage

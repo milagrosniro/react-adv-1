@@ -10,6 +10,7 @@ import { LazyPage3 } from '../01-lazyload/pages';
 import logo from '../logo.svg';
 import RegisterPage from '../03-forms/pages/RegisterPage';
 import FormikBasicPage from '../03-forms/pages/FormikBasicPage';
+import FormikYupPage from '../03-forms/pages/FormikYupPage';
 
 
 export const Navigation = () => {
@@ -26,7 +27,7 @@ export const Navigation = () => {
               <NavLink to="/formik-basic" activeClassName="nav-active" exact>Formik Basic</NavLink>
             </li>
             <li>
-              <NavLink to="/lazy3" activeClassName="nav-active" exact>Lazy3</NavLink>
+              <NavLink to="/formik-yup" activeClassName="nav-active" exact>Formik Yup</NavLink>
             </li>
             
           </ul>
@@ -39,8 +40,8 @@ export const Navigation = () => {
           <Route path="/formik-basic">
             <FormikBasicPage/>
           </Route>
-          <Route path="/lazy3">
-            <LazyPage3/>
+          <Route path="/formik-yup">
+            <FormikYupPage/>
           </Route>
 
           <Route path="/register">
