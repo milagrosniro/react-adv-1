@@ -7,13 +7,10 @@ import {
 
 //Ordenar alfabeticatemnte las importaciones:seleccionar lo que queiro ordenar, abrir el commmand palette y solocar sort descending
 
-import FormikBasicPage from '../03-forms/pages/FormikBasicPage';
-import FormikComponents from '../03-forms/pages/FormikComponents';
-import FormikYupPage from '../03-forms/pages/FormikYupPage';
-import logo from '../logo.svg';
-import RegisterPage from '../03-forms/pages/RegisterPage';
-import FormikAbstraction from '../03-forms/pages/FormikAbstraction';
+import {FormikBasicPage,  RegisterFormikPage, FormikAbstraction, FormikComponents, FormikYupPage, RegisterPage, DynamicForm} from '../03-forms/pages/';
 
+
+import logo from '../logo.svg';
 
 export const Navigation = () => {
   return (
@@ -24,6 +21,12 @@ export const Navigation = () => {
           <ul>
             <li>
             <NavLink to="/register" activeClassName="nav-active" exact>Register</NavLink>
+            </li>
+            <li>
+            <NavLink to="/dynamic-form" activeClassName="nav-active" exact>Dynamic Form</NavLink>
+            </li>
+            <li>
+            <NavLink to="/formik-register" activeClassName="nav-active" exact>Register Formik</NavLink>
             </li>
             <li>
               <NavLink to="/formik-basic" activeClassName="nav-active" exact>Formik Basic</NavLink>
@@ -47,6 +50,12 @@ export const Navigation = () => {
         
           <Route path="/formik-basic">
             <FormikBasicPage/>
+          </Route>
+          <Route path="/dynamic-form">
+            <DynamicForm/>
+          </Route>
+          <Route path="/formik-register">
+            <RegisterFormikPage/>
           </Route>
           <Route path="/formik-yup">
             <FormikYupPage/>

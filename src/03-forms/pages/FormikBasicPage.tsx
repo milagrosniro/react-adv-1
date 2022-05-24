@@ -8,7 +8,7 @@ interface IFormValues{
     email: string
 }
 
-const FormikBasicPage = () => {
+export const FormikBasicPage = () => {
 
     const validate = ({firstName,lastName,email}: IFormValues) =>{
         const errors: FormikErrors<IFormValues> = {};

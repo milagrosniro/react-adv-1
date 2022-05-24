@@ -3,7 +3,7 @@ import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import '../styles/styles.css'
 
-const FormikYupPage = () => {
+export const FormikYupPage = () => {
 
    
 //useFormik se tiene que inicializar como u objeto

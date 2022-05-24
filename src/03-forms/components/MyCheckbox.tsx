@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {useField } from "formik"
+import {ErrorMessage, useField } from "formik"
 
 interface IProps{
     label?: string;
@@ -8,9 +8,9 @@ interface IProps{
     [x: string] : any
 }
 
-const MyCheckbox = ({label, ...props}: IProps) => {
+export const MyCheckbox = ({label, ...props}: IProps) => {
     
-    const [field, meta] = useField({...props, type:'checkbox'})
+    const [field] = useField({...props, type:'checkbox'})
   return (
    <>
     <label>
@@ -19,11 +19,7 @@ const MyCheckbox = ({label, ...props}: IProps) => {
 
     </label>
     
-    {
-        meta.touched && meta.error && (
-            <span className="error">{meta.error}</span>
-        )
-    }
+    <ErrorMessage name={props.name} component="span"  />
    </>
   )
 }
